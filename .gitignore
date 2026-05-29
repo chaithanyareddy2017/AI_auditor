@@ -1,0 +1,4 @@
+auditor_env/
+.env
+_pycache_/
+*.pyc
