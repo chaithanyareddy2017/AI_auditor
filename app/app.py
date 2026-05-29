@@ -3,8 +3,8 @@ import streamlit.components.v1 as components
 import sqlite3
 import os
 import tempfile
-import whisper
-from audiorecorder import audiorecorder
+#import whisper
+#from audiorecorder import audiorecorder
 from groq import Groq
 from dotenv import load_dotenv
 from utils.database import init_db, save_session, get_sessions
@@ -312,12 +312,12 @@ No explanations. Just the questions."""
     </div>
     """, unsafe_allow_html=True)
  
-    audio = audiorecorder(
-        start_prompt="🎙 Start Recording",
-        stop_prompt="⏹ Stop Recording",
-        pause_prompt="",
-        key="audio_recorder"
-    )
+    #audio = audiorecorder(
+    start_prompt="🎙 Start Recording",
+    stop_prompt="⏹ Stop Recording",
+    pause_prompt="",
+    key="audio_recorder"
+ )
  
     if len(audio) > 0:
         st.audio(audio.export().read(), format="audio/wav")
