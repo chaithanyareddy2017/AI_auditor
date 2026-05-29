@@ -4,3 +4,4 @@ python-dotenv
 pandas
 openai-whisper
 streamlit-audiorecorder
+pudub
