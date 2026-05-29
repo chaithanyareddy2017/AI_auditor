@@ -313,10 +313,10 @@ No explanations. Just the questions."""
     """, unsafe_allow_html=True)
  
     audio = audiorecorder(
-    start_prompt="🎙 Start Recording",
-    stop_prompt="⏹ Stop Recording",
-    pause_prompt="",
-    key="audio_recorder"
+        start_prompt="🎙 Start Recording",
+        stop_prompt="⏹ Stop Recording",
+        pause_prompt="",
+        key="audio_recorder"  
     )
  
     if len(audio) > 0:
