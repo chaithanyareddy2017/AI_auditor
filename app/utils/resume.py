@@ -3,7 +3,7 @@ from llama_index.core import VectorStoreIndex, SimpleDirectoryReader, StorageCon
 from llama_index.vector_stores.chroma import ChromaVectorStore
 import chromadb
 
-CHROMA_PATH = r"D:\auditor_2.0\app\data\chroma_db"
+CHROMA_PATH = os.path.join(os.path.dirname(__file__), "data", "auditor.db")
 
 def index_resume(pdf_path, user_email):
     client = chromadb.PersistentClient(path=CHROMA_PATH)

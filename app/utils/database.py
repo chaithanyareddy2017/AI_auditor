@@ -2,7 +2,7 @@ import sqlite3
 import os
 from datetime import datetime
 
-DB_PATH = r"D:\auditor_2.0\app\data\auditor.db"
+DB_PATH = os.path.join(os.path.dirname(__file__), "data", "auditor.db")
 
 def init_db():
     conn = sqlite3.connect(DB_PATH)
