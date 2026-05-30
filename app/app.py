@@ -498,7 +498,7 @@ elif st.session_state.page == 'history':
     """, unsafe_allow_html=True)
  
     try:
-        conn = sqlite3.connectos.path.join(os.path.dirname(__file__), "data", "auditor.db") 
+        conn = sqlite3.connect(os.path.join(os.path.dirname(os.path.abspath(__file__)), "data", "auditor.db")) 
         c = conn.cursor()
         c.execute("SELECT * FROM sessions WHERE user_email = ? ORDER BY created_at DESC",
                   (user['email'],))
@@ -537,7 +537,7 @@ elif st.session_state.page == 'reports':
     """, unsafe_allow_html=True)
 
     try:
-        conn = sqlite3.connectos.path.join(os.path.dirname(__file__), "data", "auditor.db")
+        conn = sqlite3.connect(os.path.join(os.path.dirname(os.path.abspath(__file__)), "data", "auditor.db"))
         c = conn.cursor()
         c.execute("SELECT score, skills, difficulty, created_at FROM sessions WHERE user_email = ? ORDER BY created_at DESC", (user['email'],))
         rows = c.fetchall()
