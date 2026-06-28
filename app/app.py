@@ -18,6 +18,16 @@ if 'user' not in st.session_state:
  
 if 'page' not in st.session_state:
     st.session_state.page = 'dashboard'
+st.markdown("""
+    <style>
+        [data-testid="stSidebar"] {
+            display: none;
+        }
+        [data-testid="collapsedControl"] {
+            display: none;
+        }
+    </style>
+""", unsafe_allow_html=True)
  
 if st.session_state.user is None:
     st.set_page_config(page_title="Interview Auditor", layout="centered")
