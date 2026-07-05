@@ -3,6 +3,7 @@ groq
 openai-whisper
 llama-index
 llama-index-vector-stores-chroma
+llama-index-readers-file
 chromadb
 pypdf
 streamlit-audiorecorder
