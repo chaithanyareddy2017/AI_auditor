@@ -4,7 +4,6 @@ import sqlite3
 import os
 import tempfile
 import whisper
-from audiorecorder import audiorecorder
 from groq import Groq
 from dotenv import load_dotenv
 from utils.database import init_db, save_session, get_sessions
@@ -322,20 +321,16 @@ No explanations. Just the questions."""
     </div>
     """, unsafe_allow_html=True)
  
-    audio = audiorecorder(
-        start_prompt="🎙 Start Recording",
-        stop_prompt="⏹ Stop Recording",
-        pause_prompt="",
-        key="audio_recorder"  
-    )
  
-    if len(audio) > 0:
-        st.audio(audio.export().read(), format="audio/wav")
- 
-        with st.spinner("Transcribing your answer..."):
-            with tempfile.NamedTemporaryFile(suffix=".wav", delete=False) as f:
-                audio.export(f.name, format="wav")
-                temp_path = f.name
+audio = st.audio_input("🎙 Record your answer")
+
+if audio is not None:
+    st.audio(audio, format="audio/wav")
+
+    with st.spinner("Transcribing your answer..."):
+        with tempfile.NamedTemporaryFile(suffix=".wav", delete=False) as f:
+            f.write(audio.getvalue())
+            temp_path = f.name
             model = whisper.load_model("base")
             result = model.transcribe(temp_path)
             transcript = result["text"]
